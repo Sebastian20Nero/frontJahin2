@@ -1,0 +1,40 @@
+<div class="col-lg-5 mx-auto m-2">
+    <div class="card">
+    <div class="car-header p-3">
+        <h4>Carga tu propiedad</h4>
+    </div>
+    <div class="card-body">
+        <form (submit)="uploadPhoto(title, a, nc, nba, np, val, des)">
+            <div class="form-froup">
+                <input type="text" class="form-control" placeholder="propiedad" #title required>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <input type="text" class="form-control" placeholder="Area" #a required>
+                </div>
+                <div class="col-sm">
+                    <input type="number" class="form-control" placeholder="N°Cuartos" #nc required>
+                </div>
+                <div class="col-sm">
+                    <input type="number" class="form-control" placeholder="N°Baños" #nba required>
+                </div>
+                <div class="col-sm">
+                    <input type="number" class="form-control" placeholder="N°Parq." #np required>
+                </div>
+            </div>
+            <div class="form-froup">
+                <input type="number" class="form-control" placeholder="valor" #val required>
+            </div>
+            <div class="form-group mt-4">
+                <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripcion" #des required></textarea>
+            </div>
+            <input type="file" class="d-none" (change)="onPhotoSelected($any($event))" #photoInput>
+            <img [src]="photoSelected || 'assets/No-image-available.png'"  alt="No image"
+                    (click)="photoInput.click()" class="img-fluid mx-auto d-block" >
+                    <button class="btn btn-primary btn-block">
+                        Upload
+                    </button>        
+        </form>
+    </div>
+    </div>
+</div>

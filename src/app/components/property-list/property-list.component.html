@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-4 p-4" *ngFor="let photo of photos">
+        <div class="card card-photo" (click)="selectedCard(photo.id_property)">
+            <div class="card-header">
+                {{photo.property}}
+            </div>
+            <img *ngIf="photo.imagen!==''" [src]="'http://localhost:4000/' + photo.imagen"  class="img-card-top w-100">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <h6 class="card-title inline ">Cuartos:</h6>
+                        <p class="inline">{{photo.n_cuartos}}</p>
+                    </div>
+                    <div class="col-sm">
+                        <h6 class="card-title inline">Baños:</h6>
+                        <p class="inline">{{photo.n_banos}}</p>
+                    </div>
+                    <div class="col-sm">
+                        <h6 class="card-title inline">Parq:</h6>
+                        <p class="inline">{{photo.n_parqueaderos}}</p>
+                    </div>
+                </div>
+                <div class="row">  
+                    <div class="col-sm">
+                        <h6 class="inline">Area:</h6> <p class="inline">{{photo.area_p}}</p>
+                    </div>
+                    <div class="col-sm">
+                        <h6 class="inline">Valor:</h6> <p class="inline">{{photo.valor}}</p>
+                    </div>
+                </div>    
+                <div class="row mt-3 " *ngIf="photo.descripcion!==''">
+                    <div class="col-sm">
+                        <p class="card-title">{{photo.descripcion}}</p>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>

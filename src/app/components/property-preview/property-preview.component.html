@@ -1,0 +1,75 @@
+<div class="container m-5">
+<div class="row" *ngIf="!photo; else main_content">
+    <h1>Loading...</h1>
+</div>
+<ng-template #main_content>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <img *ngIf="photo?.imagen!==''" [src]="'http://localhost:4000/' + photo?.imagen" class="img-fluid">
+            </div>
+        </div> 
+        <div class="col-md-7">
+            <div class="card">
+                <form class="card-body" (submit)="updatePhoto(idp, title, a, nc, nba, np, val, des, im)">                    
+                    <input type="hidden" [value]="photo?.id_property" #idp>
+                    <input type="hidden" [value]="photo?.imagen" #im>
+                    <div class="form-froup">
+                        <h4 >Titulo</h4>
+                        <input type="text" class="form-control titlep2" placeholder="propiedad" [value]="photo?.property" #title>
+                    </div>
+                    <div class="row mt-3" >
+                        <div class="col-sm">
+                            <h6>Area</h6>
+                        </div>
+                        <div class="col-sm">
+                            <h6>N°Cuartos</h6>
+                        </div>
+                        <div class="col-sm">
+                            <h6>N°Baños</h6>
+                        </div>
+                        <div class="col-sm">
+                            <h6>N°Parqueaderos</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <input type="text" class="form-control" placeholder="Area" [value]="photo?.area_p" #a required>
+                        </div>
+                        <div class="col-sm">
+                            <input type="number" class="form-control" placeholder="N°Cuartos" [value]="photo?.n_cuartos" #nc required>
+                        </div>
+                        <div class="col-sm">
+                            <input type="number" class="form-control" placeholder="N°Baños" [value]="photo?.n_banos" #nba required>
+                        </div>
+                        <div class="col-sm">
+                            <input type="number" class="form-control" placeholder="N°Parq." [value]="photo?.n_parqueaderos"#np required>
+                        </div>
+                    </div>
+                    <div class="form-froup">
+                        <h6 class="titlep1">Valor:</h6>
+                        <input type="number" class="form-control titlep2" placeholder="valor" [value]="photo?.valor" #val required>
+                    </div>
+                    <div class="form-group mt-4">
+                        <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripcion" [value]="photo?.descripcion" #des required></textarea>
+                    </div>
+                <div class="form-froup">
+                    <input type="file" class="d-none" (change)="onPhotoSelected($any($event))" #photoInput>
+                    <img [src]="photoSelected || 'assets/No-image-available.png'"  alt="No image"
+                    (click)="photoInput.click()" class="img-fluid mx-auto d-block" >
+                </div>
+
+                            <button class="btn btn-primary btn-block">
+                                Update
+                            </button>                     
+                </form>
+                <form action="">
+                    <button class="btn btn-danger m-3" (click)="deletePhoto(photo?.id_property)">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>
+</div>

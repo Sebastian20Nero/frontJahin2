@@ -1,0 +1,17 @@
+.card-photo{
+    cursor:pointer;
+}
+
+.card-photo:hover{
+    border: 1px solid #333;
+}
+
+.img-card-top{
+    height: 300px;
+    object-fit: contain;
+}
+
+.inline{
+    display: inline;
+    padding-right: 10px;
+}
